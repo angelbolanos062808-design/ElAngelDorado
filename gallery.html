@@ -1,10 +1,192 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>gallery</title>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reel & Credits — El Ángel Dorado</title>
+  <meta name="description" content="Watch Angel’s performance reel and browse credits, styles, and training.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
+  <style>
+    :root{
+      --bg:#f8f6ef; --ink:#111; --accent:#ffdc74; --accent-2:#0f5132;
+      --muted:#6b7280; --card:#fff; --ring:rgba(15,81,50,.15);
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;text-align:center}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block;margin:auto}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+    /* HEADER (matches site) */
+    header.site-title{
+      background:linear-gradient(180deg,#fff9e7 0%,rgba(255,220,116,.18) 100%);
+      border-bottom:3px solid var(--accent);
+      padding:40px 0;
+    }
+    header.site-title h1{
+      margin:0;font-size:2.3rem;font-weight:800;letter-spacing:1px;color:var(--accent-2);text-transform:uppercase
+    }
+    header.site-title p{color:var(--muted);margin-top:6px}
+
+    /* NAV (same as other pages) */
+    nav.main{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid #eee;box-shadow:0 6px 16px rgba(0,0,0,.04)}
+    .menu{display:flex;justify-content:center;align-items:center;gap:40px;padding:14px 0}
+    .menu a{font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--accent-2);position:relative}
+    .menu a::after{content:'';display:block;width:0;height:2px;background:var(--accent);transition:width .25s ease;margin-top:3px}
+    .menu a:hover{color:var(--accent)} .menu a:hover::after{width:100%}
+    .menu a[aria-current="page"]{color:var(--accent)} .menu a[aria-current="page"]::after{width:100%}
+
+    /* REEL (centered, framed, responsive) */
+    .reel{padding:60px 0}
+    .frame{
+      border-radius:18px;overflow:hidden;border:6px solid #fff;
+      box-shadow:0 20px 40px rgba(0,0,0,.08);max-width:900px;margin:auto
+    }
+    .video-16x9{position:relative;width:100%;padding-top:56.25%}
+    .video-16x9 iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    /* SECTION TITLES */
+    .section-title{padding:60px 0 10px}
+    .section-title h2{font-size:2rem;font-weight:800;letter-spacing:.5px;color:var(--accent-2);text-transform:uppercase}
+
+    /* SMALL CARDS (like Evaluations) */
+    .grid{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;padding:30px 0}
+    .card{
+      width:260px;background:var(--card);border:1px solid #efefef;border-radius:16px;
+      box-shadow:0 8px 22px rgba(0,0,0,.05);padding:18px;transition:transform .3s
+    }
+    .card:hover{transform:translateY(-4px)}
+    .card h3{margin:0 0 8px;color:var(--accent-2);font-size:1.1rem}
+    .muted{color:var(--muted);font-size:.95rem}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .chip{background:#0f51320d;border:1px solid var(--ring);color:var(--accent-2);padding:6px 10px;border-radius:999px;font-size:.85rem}
+
+    /* CREDITS TABLE (compact card) */
+    .credits{max-width:900px;margin:0 auto 0}
+    table{width:100%;border-collapse:separate;border-spacing:0 10px}
+    th{color:var(--accent-2);text-align:left;font-weight:700}
+    td{background:#fff;border:1px solid #eee;padding:10px;border-radius:10px}
+    .tbl-wrap{background:var(--card);border:1px solid #efefef;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.05);padding:18px}
+
+    /* FULL PERFORMANCES */
+    .videos{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;padding:30px 0 10px}
+    .vid-card{width:420px;max-width:100%}
+    .vid-card .frame{box-shadow:0 14px 26px rgba(0,0,0,.07)}
+    .caption{margin-top:8px;color:var(--muted);font-size:.95rem}
+
+    /* CTA */
+    .cta-wrap{display:flex;justify-content:center;margin:60px 0 80px}
+    .btn{background:var(--accent-2);color:#fff;font-weight:700;padding:16px 34px;border-radius:12px;border:0;cursor:pointer;text-transform:uppercase;letter-spacing:.8px}
+    .btn:hover{filter:brightness(1.08)}
+
+    /* FOOTER */
+    footer.site{background:var(--accent-2);color:#fff;text-align:center;padding:25px 0;font-size:.95rem;letter-spacing:.3px}
+    footer.site span{color:var(--accent);font-weight:600}
+
+    @media (max-width:900px){
+      .menu{gap:16px;flex-wrap:wrap}
+    }
+  </style>
+</head>
 <body>
+  <!-- HEADER -->
+  <header class="site-title">
+    <h1>Gallery</h1>
+    <p class="muted">&nbsp;</p>
+  </header>
+
+  <!-- NAV -->
+  <nav class="main" aria-label="Main">
+    <div class="wrap">
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About Me</a>
+		<a href="evaluations.html">evaluation</a>
+        <a href="gallery.html" aria-current="page">gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- REEL -->
+  <section class="wrap reel" aria-label="Performance reel">
+    <div class="frame">
+      <div class="video-16x9">
+        <!-- Replace VIDEO_ID -->
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+          title="El Ángel Dorado — Performance Reel"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:10px">60–90s highlight reel • full performances below</p>
+  </section>
+
+  <!-- HIGHLIGHTS (small centered cards) -->
+  <section class="section-title"><h2>Highlights</h2></section>
+  <section class="grid wrap" aria-label="Highlights">
+    <article class="card">
+      <h3>Signature Opener</h3>
+      <p class="muted">Mariachi trumpet intro flowing into vocal lead.</p>
+      <div class="chips">
+        <span class="chip">Trumpet</span><span class="chip">Lead Vocal</span><span class="chip">Live</span>
+      </div>
+    </article>
+    <article class="card">
+      <h3>Studio Choreo</h3>
+      <p class="muted">K-inspired combo with sharp textures + facials.</p>
+      <div class="chips">
+        <span class="chip">Dance</span><span class="chip">K-Style</span><span class="chip">Precision</span>
+      </div>
+    </article>
+    <article class="card">
+      <h3>Romantic Ballad</h3>
+      <p class="muted">Warm tenor tone; phrasing + breath control.</p>
+      <div class="chips">
+        <span class="chip">Vocals</span><span class="chip">Emotion</span><span class="chip">Bilingual</span>
+      </div>
+    </article>
+  </section>
+
+
+  <!-- FULL PERFORMANCES (two framed videos) -->
+  <section class="section-title"><h2>Full Performances</h2></section>
+  <section class="videos wrap" aria-label="Full performances">
+    <div class="vid-card">
+      <div class="frame">
+        <div class="video-16x9">
+          <!-- Replace VIDEO_ID_2 -->
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Live Set — clip" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="caption">Live set excerpt — trumpet intro + vocal lead</div>
+    </div>
+
+    <div class="vid-card">
+      <div class="frame">
+        <div class="video-16x9">
+          <!-- Replace VIDEO_ID_3 -->
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Studio Choreo — clip" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="caption">Studio choreo — K-inspired combo</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a class="btn" href="contact.html#contact">Book / Collaborate</a>
+  </div>
+
+  <!-- FOOTER -->
+<footer class="site">
+    © <span id="year"></span> El Ángel Dorado • San Diego ✦ Oaxaca
+  </footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
