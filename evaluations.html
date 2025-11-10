@@ -7,75 +7,72 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#ffffff;          /* white for main background */
-      --ink:#000000;         /* black text */
-      --sub:#444444;         /* dark gray */
-      --gold:#fae29c;        /* gold */
-      --card:#ffffff;        /* white card */
-      --shadow:0 10px 28px rgba(0,0,0,.08);
-      --ring:rgba(250,226,156,.3);
+      --bg:#ffffff;
+      --ink:#000000;
+      --sub:#444444;
+      --gold:#fae29c;
+      --card:#ffffff;
+      --shadow:0 12px 24px rgba(0,0,0,.08);
       --radius:18px;
+      --line:#e0d7b3;
+      --muted:#666;
       --maxw:1160px;
     }
     *,*::before,*::after{box-sizing:border-box}
     html,body{margin:0;padding:0}
-    body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;text-align:center}
+    body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block;margin:auto}
-    .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
-    /* ===== HEADER ===== */
-    header.site-title{
-      background:linear-gradient(180deg,#0a0a0a 0%,#000 100%);
-      color:var(--gold);
-      border-bottom:1px solid #222;
-      padding:40px 0;
-    }
-    header.site-title h1{margin:0;font-family:'Playfair Display',serif;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
-    header.site-title p{color:#ccc;margin-top:6px;font-size:1rem}
+    /* ===== HEADER - slim, modern ===== */
+    header.site-title{position:relative;text-align:center;padding:60px 0;background:linear-gradient(135deg,#000 0%,#222 40%,#000 100%);color:var(--gold)}
+    header.site-title h1{font-family:'Playfair Display',serif;font-weight:900;font-size:2.4rem;margin:0;text-transform:uppercase;letter-spacing:1px}
+    header.site-title p{margin-top:10px;color:#d5d5d5;font-size:1rem}
 
-    /* ===== NAV ===== */
-    nav.main{position:sticky;top:0;z-index:30;background:#000;border-bottom:1px solid #222}
-    .menu{display:flex;justify-content:center;align-items:center;gap:30px;padding:14px 0;flex-wrap:wrap}
-    .menu a{font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gold);position:relative;padding:6px 0}
-    .menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .25s ease}
+    /* NAV - floating glass look */
+    nav.main{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);padding:10px 0;border-bottom:1px solid rgba(250,226,156,.3)}
+    .menu{display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap}
+    .menu a{color:var(--gold);font-weight:700;letter-spacing:.6px;text-transform:uppercase;position:relative;padding:6px 0}
+    .menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .3s}
     .menu a:hover::after,.menu a[aria-current="page"]::after{width:100%}
 
-    /* ===== MAIN CONTENT ===== */
-    main.content{background:#fff;color:#000}
+    /* ===== HERO / INTRO ===== */
+    .hero{background:#fff;display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:center;padding:80px 0}
+    .hero img{border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.08)}
+    .hero-text{text-align:left}
+    .hero-text h2{font-family:'Playfair Display',serif;font-size:2rem;color:#000;margin:0 0 10px}
+    .hero-text p{color:var(--muted);max-width:48ch}
 
-    /* IMAGE - TEXT - IMAGE */
-    .triple{display:flex;justify-content:center;align-items:center;gap:60px;padding:80px 0;flex-wrap:wrap;background:#fff}
-    .frame{width:260px;height:340px;border-radius:18px;overflow:hidden;border:4px solid var(--gold);box-shadow:var(--shadow);flex-shrink:0}
-    .frame img{width:100%;height:100%;object-fit:cover}
-    .mid-card{background:var(--card);border:1px solid #eee;border-radius:16px;box-shadow:var(--shadow);padding:25px;max-width:350px}
-    .mid-card h2{color:#000;margin-bottom:10px;font-size:1.3rem;font-weight:800}
-    .mid-card p{color:var(--sub);font-size:0.95rem}
+    /* ===== GRID / EVALUATORS ===== */
+    .section-title{text-align:center;padding:50px 0 20px}
+    .section-title h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#000;margin:0;text-transform:uppercase}
 
-    /* SECTION TITLE */
-    .section-title{padding:60px 0 20px;background:#fff}
-    .section-title h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;letter-spacing:.5px;color:#000;text-transform:uppercase}
-
-    /* EVALUATOR CARDS */
-    .grid3{display:flex;justify-content:center;gap:50px;flex-wrap:wrap;padding:40px 0;background:#fff}
-    .card{width:260px;background:var(--card);border:1px solid #efefef;border-radius:16px;box-shadow:var(--shadow);padding:18px;text-align:center;transition:transform .2s ease,box-shadow .2s ease}
-    .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.12)}
-    .avatar{border-radius:14px;overflow:hidden;border:4px solid var(--gold);box-shadow:0 10px 20px rgba(0,0,0,.08);margin-bottom:14px;width:100%;height:230px}
+    .evaluators{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;padding:0 0 80px}
+    .card{position:relative;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;text-align:center;transition:transform .3s ease,box-shadow .3s ease}
+    .card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,.1)}
+    .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:6px;background:var(--gold)}
+    .avatar{width:100%;height:260px;overflow:hidden}
     .avatar img{width:100%;height:100%;object-fit:cover}
-    .card h3{margin:0;color:#000;font-size:1.1rem;font-weight:700}
-    .role{color:var(--sub);font-size:0.9rem;margin:4px 0 10px}
-    .card p{color:var(--sub);font-size:0.9rem}
+    .card-content{padding:20px}
+    .card h3{margin:0;color:#000;font-weight:800;font-size:1.1rem}
+    .role{color:var(--muted);font-size:0.9rem;margin:4px 0 10px}
+    .card p{font-size:.95rem;color:var(--sub)}
 
-    /* BUTTON */
-    .cta-wrap{display:flex;justify-content:center;gap:10px;margin:60px 0 80px;background:#fff}
-    .btn{background:var(--gold);color:#000;font-weight:800;padding:14px 28px;border-radius:12px;border:0;cursor:pointer;text-transform:uppercase;letter-spacing:.8px}
-    .btn.alt{background:#000;color:var(--gold);border:1px solid var(--gold)}
+    /* RATING TAGS */
+    .tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:10px}
+    .tag{background:var(--gold);color:#000;font-weight:700;padding:6px 10px;border-radius:999px;font-size:.8rem}
+
+    /* ===== CTA ===== */
+    .cta{display:flex;justify-content:center;gap:14px;margin:40px 0 80px}
+    .btn{background:#000;color:var(--gold);font-weight:800;padding:14px 26px;border-radius:12px;border:1px solid var(--gold);text-transform:uppercase;letter-spacing:.8px}
+    .btn.alt{background:#fff;color:#000;border:2px solid #000}
     .btn:hover{filter:brightness(1.1)}
 
-    /* FOOTER */
-    footer.site{background:#000;color:var(--gold);text-align:center;padding:25px 0;font-size:.95rem;border-top:1px solid #222}
+    /* ===== FOOTER ===== */
+    footer.site{text-align:center;background:#000;color:var(--gold);padding:25px 0;font-size:.95rem;border-top:1px solid #222}
 
-    @media(max-width:900px){.triple{gap:30px;padding:60px 0}.grid3{gap:30px}}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;text-align:center}.hero-text{text-align:center}}
   </style>
 </head>
 <body>
@@ -83,7 +80,7 @@
   <header class="site-title">
     <div class="wrap">
       <h1>Evaluations</h1>
-      <p>Performance snapshots and insights from my mentors.</p>
+      <p>Performance snapshots and mentor feedback</p>
     </div>
   </header>
 
@@ -100,54 +97,61 @@
     </div>
   </nav>
 
-  <main class="content">
-    <!-- IMAGE - TEXT - IMAGE -->
-    <section class="wrap triple">
-      <div class="frame"><img src="images/eval-left.jpg" alt="Angel performing — trumpet intro" loading="lazy"></div>
-      <div class="mid-card">
-        <h2>How I’m evaluated</h2>
-        <p>My performances are reviewed for vocals, dance, and instrument skill — plus creativity, stage energy, and expression. Each evaluation helps me grow as an artist and performer.</p>
-      </div>
-      <div class="frame"><img src="images/eval-right.jpg" alt="Studio choreography moment" loading="lazy"></div>
-    </section>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero-text">
+      <h2>How I’m evaluated</h2>
+      <p>Each performance is reviewed by a diverse team of mentors, assessing vocals, dance, and instrument work. Their feedback helps refine stage presence, artistry, and authenticity.</p>
+    </div>
+    <img src="images/eval-hero.jpg" alt="Angel performing on stage" loading="lazy">
+  </section>
 
-    <!-- TITLE -->
-    <section class="section-title"><h2>My Evaluators</h2></section>
+  <!-- TITLE -->
+  <div class="section-title">
+    <h2>My Evaluators</h2>
+  </div>
 
-    <!-- EVALUATOR CARDS -->
-    <section class="grid3 wrap">
-      <article class="card">
-        <div class="avatar"><img src="images/evaluator1.jpg" alt="Evaluator 1"></div>
+  <!-- EVALUATORS GRID -->
+  <section class="wrap evaluators">
+    <article class="card">
+      <div class="avatar"><img src="images/evaluator1.jpg" alt="Evaluator 1"></div>
+      <div class="card-content">
         <h3>Juanito</h3>
         <div class="role">Vocal Coach • Pop / Mariachi</div>
         <p>Focuses on breath control, tone quality, and emotional storytelling.</p>
-      </article>
-      <article class="card">
-        <div class="avatar"><img src="images/evaluator2.jpg" alt="Evaluator 2"></div>
+        <div class="tags"><span class="tag">Vocals</span><span class="tag">Tone</span><span class="tag">Emotion</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="avatar"><img src="images/evaluator2.jpg" alt="Evaluator 2"></div>
+      <div class="card-content">
         <h3>Cynthia</h3>
-        <div class="role">Choreographer • K-Style / Stage</div>
+        <div class="role">Choreographer • K‑Style / Stage</div>
         <p>Evaluates form, movement precision, and charisma under stage lights.</p>
-      </article>
-      <article class="card">
-        <div class="avatar"><img src="images/evaluator3.jpg" alt="Evaluator 3"></div>
+        <div class="tags"><span class="tag">Dance</span><span class="tag">Energy</span><span class="tag">Charisma</span></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="avatar"><img src="images/evaluator3.jpg" alt="Evaluator 3"></div>
+      <div class="card-content">
         <h3>Virginia</h3>
         <div class="role">Music Director • Instrumentals</div>
         <p>Reviews rhythm, technique, and transitions across trumpet and guitar.</p>
-      </article>
-    </section>
+        <div class="tags"><span class="tag">Rhythm</span><span class="tag">Technique</span><span class="tag">Flow</span></div>
+      </div>
+    </article>
+  </section>
 
-    <!-- BUTTON -->
-    <div class="cta-wrap">
-      <a class="btn" href="evaluation-details.html">See the evaluations</a>
-      <a class="btn alt" href="contact.html">Contact</a>
-    </div>
-  </main>
+  <!-- CTA -->
+  <div class="cta">
+    <a class="btn" href="evaluation-details.html">See Evaluations</a>
+    <a class="btn alt" href="contact.html">Contact</a>
+  </div>
 
   <!-- FOOTER -->
-  <footer class="site">
-    © <span id="year"></span> El Ángel Dorado • San Diego ✦ Oaxaca
-  </footer>
-
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <footer class="site">© <span id="year"></span> El Ángel Dorado • San Diego ✦ Oaxaca</footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
