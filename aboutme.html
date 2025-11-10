@@ -3,220 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Me — El Ángel Dorado</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>About — El Ángel Dorado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #f8f6ef;         /* eggshell */
-      --ink:#111;            /* main text */
-      --accent:#ffdc74;      /* gold */
-      --accent-2:#0f5132;    /* deep green */
-      --muted:#6b7280;       /* gray */
-      --card:#ffffff;        /* white */
-      --ring: rgba(15,81,50,.15);
-      --maxw: 1100px;
+      --bg:#ffffff;          /* white main content */
+      --ink:#000000;         /* text */
+      --muted:#555;          /* secondary */
+      --gold:#fae29c;        /* accent gold */
+      --card:#ffffff;        /* card */
+      --ring:rgba(250,226,156,.30);
+      --shadow:0 10px 28px rgba(0,0,0,.08);
+      --radius:18px;
+      --maxw:1160px;
+      --pad:56px;            /* roomy vertical rhythm */
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--ink); line-height:1.65}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .wrap{max-width:var(--maxw);margin-inline:auto;padding:0 20px}
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--ink); line-height:1.65}
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:24px}
 
-    /* Title */
-    header.site-title{ padding:40px 0 16px; border-bottom:3px solid var(--accent); text-align:center; }
-    header.site-title h1{ margin:0; font-weight:800; letter-spacing:.5px; text-transform:uppercase; color:var(--accent-2); }
-    header.site-title p{ margin:.4rem 0 0; color:var(--muted) }
+    /* ===== Header (black & gold) ===== */
+    header.top{ background:linear-gradient(180deg,#0a0a0a 0%, #000 100%); color:#fff; border-bottom:1px solid #222 }
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:var(--gold)}
+    .brand .dot{width:10px; height:10px; border-radius:999px; background:var(--gold); box-shadow:0 0 0 6px rgba(250,226,156,.25)}
 
-    /* Nav (matches other pages) */
-    nav.main{ position:sticky; top:0; z-index:30; background:#fff; border-bottom:1px solid #eee; box-shadow:0 6px 16px rgba(0,0,0,.04) }
-    .menu{ display:flex; justify-content:center; align-items:center; gap:40px; padding:14px 0 }
-    .menu a{ font-weight:600; letter-spacing:.5px; text-transform:uppercase; color:var(--accent-2); position:relative }
-    .menu a::after{ content:""; display:block; height:2px; background:var(--accent); width:0; transition:width .25s ease; margin-top:2px }
-    .menu a:hover{ color:#000 }
-    .menu a:hover::after{ width:100% }
+    nav.main{display:flex; gap:22px; flex-wrap:wrap; align-items:center; font-weight:700; text-transform:uppercase; letter-spacing:.5px}
+    nav.main a{position:relative; padding:8px 0; color:var(--gold)}
+    nav.main a::after{content:""; position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--gold); transition:width .22s ease}
+    nav.main a:hover::after, nav.main a[aria-current="page"]::after{width:100%}
 
-    /* Intro split */
-    .split{ display:grid; grid-template-columns:1.1fr 1fr; gap:32px; align-items:stretch; padding:40px 0 }
-    .panel{ background:var(--card); border:1px solid #eee; border-radius:18px; padding:20px; box-shadow:0 10px 26px rgba(0,0,0,.06) }
-    .panel h2{ color:var(--accent-2); margin-top:0 }
-    .lead{ font-size:1.05rem }
+    /* ===== Section helpers ===== */
+    section.block{padding:var(--pad) 0; background:#fff}
+    .section-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px}
+    .section-title h2{font-family:"Playfair Display",serif; font-weight:900; margin:0}
+    .muted{color:var(--muted)}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{background:#fff; border:1px solid var(--gold); color:#000; padding:6px 10px; border-radius:999px; font-weight:700; font-size:.82rem}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{background:var(--card); border:1px solid #efefef; border-radius:var(--radius); box-shadow:var(--shadow); padding:22px}
 
-    /* Chips */
-    .chips{ margin-top:8px }
-    .chip{ display:inline-block; background:#0f51320d; border:1px solid var(--ring); color:var(--accent-2); padding:6px 10px; border-radius:999px; font-size:.85rem; margin:4px 6px 0 0 }
+    /* ===== Hero ===== */
+    .hero{padding:var(--pad) 0; background:#fff}
+    .hero-grid{display:grid; grid-template-columns:1.05fr 1fr; gap:40px; align-items:center}
+    .portrait{border-radius:24px; overflow:hidden; border:4px solid var(--gold); box-shadow:0 18px 36px rgba(0,0,0,.10)}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:#000; color:var(--gold); border:1px solid var(--gold); border-radius:999px; font-size:.86rem}
+    h1{font-family:"Playfair Display",serif; font-weight:900; font-size:clamp(2rem,3.2vw,3rem); line-height:1.08; margin:.5rem 0 0}
+    .lead{font-size:1.05rem; color:var(--muted); max-width:60ch}
 
-    /* Two-column lists */
-    .cols{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px }
-    .card{ background:var(--card); border:1px solid #efefef; border-radius:16px; box-shadow:0 8px 22px rgba(0,0,0,.05); padding:18px }
-    .card h3{ margin:0 0 8px; color:var(--accent-2) }
-    ul{ margin:0; padding-left:18px }
+    /* ===== Highlight band / motto ===== */
+    .motto{ background:#fff8e0; border-top:1px solid #ffe7a8; border-bottom:1px solid #ffe7a8; padding:20px 0; text-align:center }
+    .motto em{ color:#4a3c00 }
 
-    /* Vision block */
-    .vision{ padding:20px; border-left:4px solid var(--accent); background:#fffdf5; border-radius:12px }
+    /* ===== Footer ===== */
+    footer.site{ background:#000; color:var(--gold); margin-top:40px; border-top:1px solid #222 }
+    footer .inner{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; padding:18px 24px}
 
-    /* Goals grid */
-    .goals{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px }
-    .goal{ background:var(--card); border:1px solid #efefef; border-radius:14px; padding:16px }
-    .goal strong{ color:var(--accent-2) }
-
-    /* Fun facts */
-    .facts{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px }
-
-    /* CTA */
-    .cta-wrap{ display:flex; justify-content:center; margin:28px 0 12px }
-    .btn{ display:inline-block; background:var(--accent-2); color:#fff; font-weight:700; padding:12px 20px; border-radius:12px; border:0; cursor:pointer; text-transform:uppercase; letter-spacing:.8px }
-
-    /* Footer */
-    footer.site{ background:var(--accent-2); color:#fff; text-align:center; padding:20px 0; margin-top:30px }
-    footer.site span{ color:var(--accent); font-weight:600 }
-
-    @media (max-width: 900px){
-      .split{ grid-template-columns:1fr }
-      .cols{ grid-template-columns:1fr }
-      .goals{ grid-template-columns:1fr }
-      .facts{ grid-template-columns:1fr }
-      .menu{ gap:16px; flex-wrap:wrap }
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+    @media (prefers-reduced-motion:no-preference){
+      .card,.portrait{transition: transform .2s ease, box-shadow .2s ease}
+      .card:hover,.portrait:hover{transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.12)}
     }
   </style>
 </head>
 <body>
-  <!-- Title -->
-  <header class="site-title">
-    <div class="wrap">
-      <h1>About Me</h1>
-      <p>San Diego–raised • Oaxaqueño at heart — I sing, dance, and share joy through culture.</p>
+  <!-- Header -->
+  <header class="top">
+    <div class="wrap topbar">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> El Ángel Dorado</div>
+      <nav class="main" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="aboutme.html" aria-current="page">About</a>
+        <a href="evaluations.html">Evaluations</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Nav -->
-  <nav class="main" aria-label="Main">
+  <!-- Hero (with your original lead + chips) -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <figure class="portrait"><img src="about-portrait.jpg" alt="Angel performing and dancing folklórico"/></figure>
+      <div>
+        <span class="eyebrow">San Diego ✦ Oaxaqueño ✦ Bilingual</span>
+        <h1>Angel Abimael — <span class="muted">“El Ángel Dorado”</span></h1>
+        <p class="lead">I’m from San Diego, California, proudly Oaxaqueño. Music and dance have been my way to express both hard moments and pure happiness. I started singing as a kid; folklórico pushed me to take performing seriously. Since then, I’ve blended voice, movement, and culture to tell stories that feel honest and joyful.</p>
+        <div class="chips" style="margin-top:10px">
+          <span class="chip">Bilingual performer</span>
+          <span class="chip">Folklórico roots</span>
+          <span class="chip">Trumpet • Guitar • Violin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Style (original two cards) -->
+  <section class="block">
+    <div class="wrap grid-2" aria-label="Skills and Style">
+      <article class="card">
+        <h2>Instruments & Skills</h2>
+        <ul>
+          <li>Primary: trumpet, guitar, violin</li>
+          <li>Also explored: French horn, flute, piccolo, clarinet</li>
+          <li>Singer • Dancer (folklórico) • Performer</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Sound & Performance</h2>
+        <ul>
+          <li>Genres I explore: romantic, pop, hip‑hop, opera</li>
+          <li>Style: charming, fun, energetic, emotional, and audience‑first</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Influences + Vision (original chips + vision block) -->
+  <section class="block">
     <div class="wrap">
-      <div class="menu">
-        <a href="index.html">Home</a>
-        <a href="aboutme.html">About Me</a>
-		<a href="evaluations.html">Evaluations</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="cotact.html">Contact</a>
+      <div class="card" style="margin-bottom:16px">
+        <h2>Artists I admire</h2>
+        <div class="chips" style="margin-top:8px">
+          <span class="chip">Mon Laferte</span>
+          <span class="chip">Kali Uchis</span>
+          <span class="chip">Las Marías</span>
+        </div>
       </div>
-    </div>
-  </nav>
-
-  <!-- Intro split: Photo + Bio -->
-  <section class="wrap split" id="top">
-    <div class="panel">
-      <img src="about-portrait.jpg" alt="Angel performing and dancing folklórico" />
-    </div>
-    <div class="panel">
-      <h2>Angel Abimael — “El Ángel Dorado”</h2>
-      <p class="lead">
-        I’m from San Diego, California, proudly Oaxaqueño. Music and dance have been my way to express both hard moments and pure happiness. I started singing as a kid; folklórico pushed me to take performing seriously. Since then, I’ve blended voice, movement, and culture to tell stories that feel honest and joyful.
-      </p>
-      <div class="chips">
-        <span class="chip">Bilingual performer</span>
-        <span class="chip">Folklórico roots</span>
-        <span class="chip">Trumpet • Guitar • Violin</span>
+      <div class="card" style="border-left:6px solid var(--gold)">
+        <h2>Artistic vision</h2>
+        <p>I want people to love themselves, have fun, and feel free. Whether it’s a pop moment or a heartfelt ballad, I aim to spark joy and connection — the kind you feel in your body.</p>
       </div>
     </div>
   </section>
 
-  <!-- Skills & Style -->
-  <section class="wrap cols" aria-label="Skills and Style">
-    <article class="card">
-      <h3>Instruments & Skills</h3>
-      <ul>
-        <li>Primary: trumpet, guitar, violin</li>
-        <li>Also explored: French horn, flute, piccolo, clarinet</li>
-        <li>Singer • Dancer (folklórico) • Performer</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h3>Sound & Performance</h3>
-      <ul>
-        <li>Genres I explore: romantic, pop, hip‑hop, opera</li>
-        <li>Style: charming, fun, energetic, emotional, and audience‑first</li>
-      </ul>
-    </article>
-  </section>
-
-  <!-- Influences + Vision -->
-  <section class="wrap" aria-label="Influences and Vision" style="padding:10px 0 24px">
-    <div class="card" style="margin-bottom:16px">
-      <h3>Artists I admire</h3>
-      <div class="chips">
-        <span class="chip">Mon Laferte</span>
-        <span class="chip">Kali Uchis</span>
-        <span class="chip">Las Marías</span>
-      </div>
-    </div>
-    <div class="vision">
-      <strong>Artistic vision:</strong> I want people to love themselves, have fun, and feel free. Whether it’s a pop moment or a heartfelt ballad, I aim to spark joy and connection — the kind you feel in your body.
-    </div>
-  </section>
-
-  <!-- Goals & Dreams -->
-  <section class="wrap" aria-label="Goals and Dreams" style="padding:12px 0 24px">
-    <div class="goals">
-      <div class="goal"><strong>Short‑term:</strong> perform more, release polished live clips, and keep developing my sound.</div>
-      <div class="goal"><strong>Long‑term:</strong> build a lasting career on stage and in the studio — and one day teach folklórico and the arts.</div>
-      <div class="goal"><strong>Dreams:</strong> collaborate on major campaigns (inspired by GAP’s artist features), be a fashion house ambassador, and design my own brand.</div>
+  <!-- Goals & Dreams (3 cards, spaced) -->
+  <section class="block">
+    <div class="wrap grid-3" aria-label="Goals and Dreams">
+      <article class="card"><h2>Short‑term</h2><p>Perform more, release polished live clips, and keep developing my sound.</p></article>
+      <article class="card"><h2>Long‑term</h2><p>Build a lasting career on stage and in the studio — and one day teach folklórico and the arts.</p></article>
+      <article class="card"><h2>Dreams</h2><p>Collaborate on major campaigns (inspired by GAP’s artist features), be a fashion house ambassador, and design my own brand.</p></article>
     </div>
   </section>
 
   <!-- What makes me different -->
-  <section class="wrap" aria-label="What makes me different" style="padding:0 0 12px">
-    <div class="card">
-      <h3>What makes my music different</h3>
-      <p>Charm and passion. I bring dance energy and open‑heart storytelling to every show so people can feel happiness and authenticity in the moment.</p>
+  <section class="block">
+    <div class="wrap">
+      <article class="card">
+        <h2>What makes my music different</h2>
+        <p>Charm and passion. I bring dance energy and open‑heart storytelling to every show so people can feel happiness and authenticity in the moment.</p>
+      </article>
     </div>
   </section>
 
-  <!-- Personal Touch -->
-  <section class="wrap facts" aria-label="Personal touch">
-    <div class="card">
-      <h3>What might surprise you</h3>
-      <p>My journey has included a big glow‑up — growing, learning, and finding confidence. I want fans to see that I’m a regular person who chased a dream, and that anyone can build a better version of themselves.</p>
-    </div>
-    <div class="card">
-      <h3>Beyond the stage</h3>
-      <p>I love cooking, gaming, fashion, parties, and new experiences — from modern huapangos to trying things that get my adrenaline going. I deal with anxiety too, and I’m learning to channel it into creativity.</p>
+  <!-- Personal Touch (2 cards) -->
+  <section class="block">
+    <div class="wrap grid-2" aria-label="Personal touch">
+      <article class="card">
+        <h2>What might surprise you</h2>
+        <p>My journey has included a big glow‑up — growing, learning, and finding confidence. I want fans to see that I’m a regular person who chased a dream, and that anyone can build a better version of themselves.</p>
+      </article>
+      <article class="card">
+        <h2>Beyond the stage</h2>
+        <p>I love cooking, gaming, fashion, parties, and new experiences — from modern huapangos to trying things that get my adrenaline going. I deal with anxiety too, and I’m learning to channel it into creativity.</p>
+      </article>
     </div>
   </section>
 
   <!-- What music means -->
-  <section class="wrap" aria-label="What music means" style="padding:12px 0 24px">
-    <div class="card">
-      <h3>What music means to me</h3>
-      <p>Music is culture and emotion. It carries history and community forward. I want to honor my roots and help people feel seen — now and for the future.</p>
+  <section class="block">
+    <div class="wrap">
+      <article class="card">
+        <h2>What music means to me</h2>
+        <p>Music is culture and emotion. It carries history and community forward. I want to honor my roots and help people feel seen — now and for the future.</p>
+      </article>
     </div>
   </section>
 
-  <!-- Motto -->
-  <section class="wrap" aria-label="Motto" style="padding:0 0 24px;text-align:center">
-    <em class="muted">“Always dream. Without a future to imagine, we’d be stuck in the past.”</em>
-  </section>
+  <!-- Motto band -->
+  <section class="motto"><div class="wrap"><em>“Always dream. Without a future to imagine, we’d be stuck in the past.”</em></div></section>
 
   <!-- Community -->
-  <section class="wrap" aria-label="Community" style="padding:0 0 24px">
-    <div class="card">
-      <h3>For my community</h3>
-      <p>I’m proud of my Oaxacan heritage — our language, food, and faith traditions. I want to share that love with the world and uplift others who see themselves in my story.</p>
+  <section class="block">
+    <div class="wrap">
+      <article class="card">
+        <h2>For my community</h2>
+        <p>I’m proud of my Oaxacan heritage — our language, food, and faith traditions. I want to share that love with the world and uplift others who see themselves in my story.</p>
+      </article>
     </div>
   </section>
 
   <!-- CTA -->
-  <div class="cta-wrap">
-    <a class="btn" href="contact.html#contact">Book or say hello</a>
-  </div>
+  <section class="block" aria-label="Call to action">
+    <div class="wrap">
+      <div class="card" style="display:flex; align-items:center; justify-content:space-between; gap:18px">
+        <div>
+          <strong>Bookings & Collabs</strong>
+          <div class="muted">Let’s make something special for your audience.</div>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center">
+          <a class="chip" href="contact.html#contact">Book or say hello</a>
+          <a class="chip" href="gallery.html">See the gallery</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="site">
-    <div class="wrap">© <span id="year"></span> El Ángel Dorado • San Diego ✦ Oaxaca</div>
+  <footer class="site" role="contentinfo">
+    <div class="wrap inner">© <span id="year"></span> El Ángel Dorado • San Diego ✦ Oaxaca</div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

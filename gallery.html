@@ -5,96 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Reel & Credits — El Ángel Dorado</title>
   <meta name="description" content="Watch Angel’s performance reel and browse credits, styles, and training.">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f8f6ef; --ink:#111; --accent:#ffdc74; --accent-2:#0f5132;
-      --muted:#6b7280; --card:#fff; --ring:rgba(15,81,50,.15);
-      --maxw:1100px;
+      /* Color system */
+      --bg:#ffffff;            /* white main content */
+      --ink:#000000;           /* black text */
+      --muted:#444444;         /* secondary text */
+      --gold:#fae29c;          /* accent gold */
+      --card:#ffffff;          /* card bg */
+      --ring:rgba(250,226,156,.30);
+      --shadow:0 10px 28px rgba(0,0,0,.08);
+      --radius:18px;
+      --maxw:1160px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;text-align:center}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block;margin:auto}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--ink); line-height:1.65; text-align:center}
+    img{max-width:100%; display:block; margin:auto}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:24px}
 
-    /* HEADER (matches site) */
+    /* ===== Header (black & gold) ===== */
     header.site-title{
-      background:linear-gradient(180deg,#fff9e7 0%,rgba(255,220,116,.18) 100%);
-      border-bottom:3px solid var(--accent);
-      padding:40px 0;
+      background: linear-gradient(180deg,#0a0a0a 0%, #000 100%);
+      color:#fff; border-bottom:1px solid #222; padding:32px 0 36px;
     }
-    header.site-title h1{
-      margin:0;font-size:2.3rem;font-weight:800;letter-spacing:1px;color:var(--accent-2);text-transform:uppercase
-    }
-    header.site-title p{color:var(--muted);margin-top:6px}
+    header.site-title h1{ margin:0; font-family:"Playfair Display", serif; font-weight:900; letter-spacing:.5px; text-transform:uppercase; color:var(--gold) }
+    header.site-title p{ color:#d8d8d8; margin:.35rem 0 0 }
 
-    /* NAV (same as other pages) */
-    nav.main{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid #eee;box-shadow:0 6px 16px rgba(0,0,0,.04)}
-    .menu{display:flex;justify-content:center;align-items:center;gap:40px;padding:14px 0}
-    .menu a{font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--accent-2);position:relative}
-    .menu a::after{content:'';display:block;width:0;height:2px;background:var(--accent);transition:width .25s ease;margin-top:3px}
-    .menu a:hover{color:var(--accent)} .menu a:hover::after{width:100%}
-    .menu a[aria-current="page"]{color:var(--accent)} .menu a[aria-current="page"]::after{width:100%}
+    /* ===== Nav (black bar) ===== */
+    nav.main{ position:sticky; top:0; z-index:30; background:#000; border-bottom:1px solid #222 }
+    .menu{ display:flex; justify-content:center; align-items:center; gap:28px; padding:12px 0 }
+    .menu a{ color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:.5px; position:relative; padding:6px 0 }
+    .menu a::after{ content:""; position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--gold); transition:width .22s ease }
+    .menu a:hover::after, .menu a[aria-current="page"]::after{ width:100% }
 
-    /* REEL (centered, framed, responsive) */
-    .reel{padding:60px 0}
-    .frame{
-      border-radius:18px;overflow:hidden;border:6px solid #fff;
-      box-shadow:0 20px 40px rgba(0,0,0,.08);max-width:900px;margin:auto
-    }
-    .video-16x9{position:relative;width:100%;padding-top:56.25%}
-    .video-16x9 iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    /* ===== Reel (white content) ===== */
+    .reel{ padding:44px 0 18px; background:#fff }
+    .frame{ border-radius:18px; overflow:hidden; border:6px solid #fff; box-shadow:0 20px 40px rgba(0,0,0,.08); max-width:960px; margin:auto }
+    .video-16x9{ position:relative; width:100%; padding-top:56.25% }
+    .video-16x9 iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+    .note{ color:#666; margin-top:10px }
 
-    /* SECTION TITLES */
-    .section-title{padding:60px 0 10px}
-    .section-title h2{font-size:2rem;font-weight:800;letter-spacing:.5px;color:var(--accent-2);text-transform:uppercase}
+    /* ===== Section titles ===== */
+    .section-title{ padding:40px 0 6px; background:#fff }
+    .section-title h2{ font-family:"Playfair Display", serif; font-size:clamp(1.6rem,2.4vw,2.1rem); font-weight:900; letter-spacing:.6px; text-transform:uppercase; margin:0 }
 
-    /* SMALL CARDS (like Evaluations) */
-    .grid{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;padding:30px 0}
-    .card{
-      width:260px;background:var(--card);border:1px solid #efefef;border-radius:16px;
-      box-shadow:0 8px 22px rgba(0,0,0,.05);padding:18px;transition:transform .3s
-    }
-    .card:hover{transform:translateY(-4px)}
-    .card h3{margin:0 0 8px;color:var(--accent-2);font-size:1.1rem}
-    .muted{color:var(--muted);font-size:.95rem}
-    .chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
-    .chip{background:#0f51320d;border:1px solid var(--ring);color:var(--accent-2);padding:6px 10px;border-radius:999px;font-size:.85rem}
+    /* ===== Small cards (white) ===== */
+    .grid{ display:flex; justify-content:center; gap:24px; flex-wrap:wrap; padding:22px 0 6px; background:#fff }
+    .card{ width:280px; background:var(--card); border:1px solid #efefef; border-radius:16px; box-shadow:var(--shadow); padding:18px; transition:transform .2s ease, box-shadow .2s ease }
+    .card:hover{ transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,0,0,.12) }
+    .card h3{ margin:0 0 8px; font-weight:800 }
+    .muted{ color:var(--muted) }
+    .chips{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:8px }
+    .chip{ background:#000; color:var(--gold); border:1px solid var(--gold); padding:6px 10px; border-radius:999px; font-weight:700; font-size:.82rem }
 
-    /* CREDITS TABLE (compact card) */
-    .credits{max-width:900px;margin:0 auto 0}
-    table{width:100%;border-collapse:separate;border-spacing:0 10px}
-    th{color:var(--accent-2);text-align:left;font-weight:700}
-    td{background:#fff;border:1px solid #eee;padding:10px;border-radius:10px}
-    .tbl-wrap{background:var(--card);border:1px solid #efefef;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.05);padding:18px}
+    /* ===== Credits table (card) ===== */
+    .credits{ max-width:960px; margin:0 auto }
+    .tbl-wrap{ background:var(--card); border:1px solid #efefef; border-radius:16px; box-shadow:var(--shadow); padding:18px }
+    table{ width:100%; border-collapse:separate; border-spacing:0 10px; text-align:left }
+    th{ color:#000; font-weight:800; font-size:.95rem }
+    td{ background:#fff; border:1px solid #eee; padding:10px; border-radius:10px }
 
-    /* FULL PERFORMANCES */
-    .videos{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;padding:30px 0 10px}
-    .vid-card{width:420px;max-width:100%}
-    .vid-card .frame{box-shadow:0 14px 26px rgba(0,0,0,.07)}
-    .caption{margin-top:8px;color:var(--muted);font-size:.95rem}
+    /* ===== Full performance videos ===== */
+    .videos{ display:flex; justify-content:center; gap:24px; flex-wrap:wrap; padding:22px 0 10px; background:#fff }
+    .vid-card{ width:480px; max-width:100% }
+    .vid-card .frame{ box-shadow:0 14px 26px rgba(0,0,0,.07) }
+    .caption{ margin-top:8px; color:#666; font-size:.95rem }
 
-    /* CTA */
-    .cta-wrap{display:flex;justify-content:center;margin:60px 0 80px}
-    .btn{background:var(--accent-2);color:#fff;font-weight:700;padding:16px 34px;border-radius:12px;border:0;cursor:pointer;text-transform:uppercase;letter-spacing:.8px}
-    .btn:hover{filter:brightness(1.08)}
+    /* ===== CTA ===== */
+    .cta-wrap{ display:flex; justify-content:center; gap:12px; background:#fff; padding:36px 0 64px }
+    .btn{ display:inline-block; background:var(--gold); color:#000; font-weight:900; padding:14px 24px; border-radius:12px; border:0; cursor:pointer; text-transform:uppercase; letter-spacing:.8px }
+    .btn.alt{ background:#000; color:var(--gold); border:1px solid var(--gold) }
+    .btn:hover{ filter:brightness(1.08) }
 
-    /* FOOTER */
-    footer.site{background:var(--accent-2);color:#fff;text-align:center;padding:25px 0;font-size:.95rem;letter-spacing:.3px}
-    footer.site span{color:var(--accent);font-weight:600}
+    /* ===== Footer (black & gold) ===== */
+    footer.site{ background:#000; color:var(--gold); text-align:center; padding:22px 0; font-size:.95rem; border-top:1px solid #222 }
 
-    @media (max-width:900px){
-      .menu{gap:16px;flex-wrap:wrap}
-    }
+    /* ===== Responsive ===== */
+    @media (max-width:900px){ .menu{gap:16px; flex-wrap:wrap} }
   </style>
 </head>
 <body>
   <!-- HEADER -->
   <header class="site-title">
-    <h1>Gallery</h1>
-    <p class="muted">&nbsp;</p>
+    <div class="wrap">
+      <h1>Reel & Credits</h1>
+      <p class="muted">Watch the highlight reel • Explore full performances</p>
+    </div>
   </header>
 
   <!-- NAV -->
@@ -103,9 +102,9 @@
       <div class="menu">
         <a href="index.html">Home</a>
         <a href="aboutme.html">About Me</a>
-		<a href="evaluations.html">evaluation</a>
-        <a href="gallery.html" aria-current="page">gallery</a>
-        <a href="cotact.html">Contact</a>
+        <a href="evaluations.html">Evaluations</a>
+        <a href="gallery.html" aria-current="page">Gallery</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
   </nav>
@@ -121,11 +120,11 @@
           allowfullscreen></iframe>
       </div>
     </div>
-    <p class="muted" style="margin-top:10px">60–90s highlight reel • full performances below</p>
+    <p class="note">60–90s highlight reel • full performances below</p>
   </section>
 
-  <!-- HIGHLIGHTS (small centered cards) -->
-  <section class="section-title"><h2>Highlights</h2></section>
+  <!-- HIGHLIGHTS -->
+  <section class="section-title"><div class="wrap"><h2>Highlights</h2></div></section>
   <section class="grid wrap" aria-label="Highlights">
     <article class="card">
       <h3>Signature Opener</h3>
@@ -150,9 +149,8 @@
     </article>
   </section>
 
-
-  <!-- FULL PERFORMANCES (two framed videos) -->
-  <section class="section-title"><h2>Full Performances</h2></section>
+  <!-- FULL PERFORMANCES -->
+  <section class="section-title"><div class="wrap"><h2>Full Performances</h2></div></section>
   <section class="videos wrap" aria-label="Full performances">
     <div class="vid-card">
       <div class="frame">
@@ -171,21 +169,39 @@
           <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Studio Choreo — clip" allowfullscreen></iframe>
         </div>
       </div>
-      <div class="caption">Studio choreo — K-inspired combo</div>
+      <div class="caption">Studio choreo — K‑inspired combo</div>
+    </div>
+  </section>
+
+  <!-- OPTIONAL: CREDITS TABLE (keep placeholder markup) -->
+  <section class="section-title"><div class="wrap"><h2>Credits</h2></div></section>
+  <section class="wrap credits" aria-label="Credits">
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Project</th><th>Role</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Community Gala</td><td>Lead Vocal • Trumpet</td><td>Opening medley; bilingual MC</td></tr>
+          <tr><td>Studio Showcase</td><td>Choreo/Dancer</td><td>K‑inspired contemporary combo</td></tr>
+          <tr><td>Cultural Festival</td><td>Performer</td><td>Folklórico feature; live band</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <!-- CTA -->
   <div class="cta-wrap">
     <a class="btn" href="contact.html#contact">Book / Collaborate</a>
+    <a class="btn alt" href="aboutme.html">About Me</a>
   </div>
 
   <!-- FOOTER -->
-<footer class="site">
+  <footer class="site">
     © <span id="year"></span> El Ángel Dorado • San Diego ✦ Oaxaca
   </footer>
 
-<script>
+  <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>

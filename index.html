@@ -5,321 +5,167 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home — El Ángel Dorado</title>
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600..900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #f8f6ef;         /* eggshell */
-      --ink: #111;           /* main text */
-      --accent: #ffdc74;     /* gold */
-      --accent-2: #0f5132;   /* deep green */
-      --muted: #6b7280;      /* gray */
-      --card: #ffffff;       /* white */
-      --ring: rgba(15,81,50,.15);
-      --maxw: 1100px;
+    :root{
+      --bg:#ffffff;         /* white for main background */
+      --ink:#000000;        /* black text */
+      --sub:#333333;        /* darker gray */
+      --accent:#fae29c;     /* soft gold */
+      --emerald:#fae29c;    /* same gold for headers */
+      --card:#ffffff;       /* white card */
+      --ring:rgba(250,226,156,.3);
+      --shadow:0 10px 28px rgba(0,0,0,.08);
+      --radius:18px;
+      --maxw:1160px;
     }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--ink); line-height:1.65}
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding-inline:24px}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
+    /* ======= Header ======= */
+    header.hero{
+      position:relative; overflow:hidden; border-bottom:1px solid #2b2b2b;
+      background: radial-gradient(1000px 600px at 20% 10%, rgba(250,226,156,.15), transparent 50%), linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+      color:#fff;
     }
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:var(--accent)}
+    .brand .dot{width:10px; height:10px; border-radius:999px; background:var(--accent); box-shadow:0 0 0 6px rgba(250,226,156,.25)}
 
-    a { color: inherit; text-decoration: none; }
+    nav.main{display:flex; gap:22px; flex-wrap:wrap; align-items:center; font-weight:600; text-transform:uppercase; letter-spacing:.5px}
+    nav.main a{position:relative; padding:8px 0; color:var(--accent)}
+    nav.main a::after{content:""; position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--accent); transition:width .25s ease}
+    nav.main a:hover::after, nav.main a[aria-current="page"]::after{width:100%}
 
-    img { max-width: 100%; display: block; }
+    .hero-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:36px; align-items:center; padding:18px 0 40px}
+    .hero-copy h1{font-family:"Playfair Display", serif; font-weight:900; font-size:clamp(2.2rem,3.7vw,3.4rem); line-height:1.05; margin:0; color:var(--accent)}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:rgba(250,226,156,.08); border:1px solid var(--ring); border-radius:999px; font-size:.86rem; color:var(--accent); margin-bottom:10px}
+    .eyebrow .spark{width:8px; height:8px; border-radius:999px; background:var(--accent)}
+    .hero-copy p{color:#e0e0e0; margin:.85rem 0 1.1rem; font-size:1.05rem}
 
-    .wrap {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    .hero-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:14px}
+    .hcard{background:#111; border:1px solid #222; border-radius:var(--radius); box-shadow:var(--shadow); padding:16px}
+    .hcard strong{display:block; color:var(--accent)}
+    .hcard span{color:#ccc; font-size:.92rem}
 
-    /* HEADER TITLE */
-    header.site-title {
-      background: linear-gradient(180deg, #fff9e7 0%, rgba(255,220,116,.18) 100%);
-      border-bottom: 3px solid var(--accent);
-      padding: 40px 0;
-      text-align: center;
-    }
+    .portrait{border-radius:24px; overflow:hidden; border:4px solid var(--accent); box-shadow:0 0 20px rgba(250,226,156,.15)}
 
-    header.site-title h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: var(--accent-2);
-      text-transform: uppercase;
-    }
+    /* ======= Main Content Background ======= */
+    main.content{background:#fff; color:#000;}
 
-    /* NAVIGATION */
-    nav.main {
-      position: sticky; top: 0; z-index: 30;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      box-shadow: 0 6px 16px rgba(0,0,0,.04);
-    }
+    section.preview{padding:42px 0; text-align:center; background:#fff;}
+    .kicker{color:var(--ink); font-weight:800; text-transform:uppercase; letter-spacing:.22em; font-size:.86rem}
+    section.preview h2{margin:10px 0 6px; font-size:clamp(1.4rem,2.2vw,1.9rem); font-weight:800; color:var(--ink)}
+    section.preview p{max-width:720px; margin:0 auto; color:#444}
 
-    .menu {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      padding: 15px 0;
-    }
+    .split{display:grid; grid-template-columns:1.1fr 1fr; gap:36px; align-items:center; padding:44px 0; background:#fff;}
+    .panel{background:var(--card); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .panel h2{font-family:"Playfair Display", serif; color:var(--ink); margin:0 0 8px}
 
-    .menu a {
-      font-weight: 600;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--accent-2);
-      position: relative;
-      transition: color 0.3s;
-    }
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; background:#fff;}
+    .card{background:var(--card); border:1px solid #efefef; border-radius:16px; box-shadow:var(--shadow); padding:20px; text-align:center}
+    .card h3{color:var(--ink); margin:0 0 6px}
+    .card p{color:#555; margin:0}
 
-    .menu a::after {
-      content: '';
-      display: block;
-      width: 0%;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-      margin-top: 3px;
-    }
+    .cta-wrap{display:flex; justify-content:center; gap:12px; margin:28px 0 10px; background:#fff;}
+    .btn{display:inline-block; background:var(--accent); color:#000; font-weight:800; padding:12px 20px; border-radius:12px; border:0; cursor:pointer; text-transform:uppercase; letter-spacing:.8px}
+    .btn.alt{background:#000; color:var(--accent)}
+    .btn:hover{filter:brightness(1.1)}
 
-    .menu a:hover {
-      color: var(--accent);
-    }
+    footer.site{ background:#000; color:var(--accent); margin-top:0; border-top:1px solid #222 }
+    footer .inner{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; padding:18px 24px}
+    footer .tag{color:var(--accent); font-weight:800}
 
-    .menu a:hover::after {
-      width: 100%;
-    }
-
-    /* HERO IMAGE */
-    .hero {
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    .hero .frame {
-      border-radius: 20px;
-      overflow: hidden;
-      border: 6px solid #fff;
-      box-shadow: 0 20px 40px rgba(0,0,0,.08);
-      display: inline-block;
-    }
-
-    /* CENTERED TEXT PREVIEW */
-    section.preview {
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .kicker {
-      color: var(--accent-2);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      font-size: .9rem;
-    }
-
-    .preview h2 {
-      margin: 10px 0;
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-    .preview p {
-      max-width: 700px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    /* SPLIT ROW */
-    .split {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      padding: 50px 0;
-    }
-
-    .split .panel {
-      background: var(--card);
-      border-radius: 18px;
-      padding: 20px;
-      border: 1px solid #eee;
-      box-shadow: 0 10px 26px rgba(0,0,0,.06);
-    }
-
-    .split h2 {
-      font-size: 1.7rem;
-      color: var(--accent-2);
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-
-    /* THREE COLUMNS */
-    .grid3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 10px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid #efefef;
-      box-shadow: 0 8px 22px rgba(0,0,0,.05);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      color: var(--accent-2);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .cta-wrap {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .btn {
-      background: var(--accent-2);
-      color: #fff;
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .btn:hover {
-      filter: brightness(1.1);
-    }
-
-    /* FOOTER */
-    footer.site {
-      background: var(--accent-2);
-      color: #fff;
-      text-align: center;
-      padding: 25px 0;
-      font-size: 0.95rem;
-      letter-spacing: 0.3px;
-      margin-top: 60px;
-    }
-
-    footer.site span {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .split { grid-template-columns: 1fr; }
-      .grid3 { grid-template-columns: 1fr; }
-      .menu { flex-wrap: wrap; gap: 15px; }
-      .menu a { font-size: 0.9rem; }
-    }
+    @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.hero-cards{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}}
+    @media (max-width:680px){nav.main{gap:14px}.hero-cards,.grid3{grid-template-columns:1fr}}
   </style>
 </head>
-
 <body>
-  <!-- CENTERED HEADER TITLE -->
-  <header class="site-title">
-    <h1>El Ángel Dorado</h1>
+  <header class="hero">
+    <div class="wrap topbar">
+      <div class="brand"><span class="dot"></span> El Ángel Dorado</div>
+      <nav class="main">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="aboutme.html">About</a>
+        <a href="evaluations.html">Evaluations</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="spark"></span> San Diego ✦ Oaxaqueño ✦ Bilingual</span>
+        <h1>El Ángel Dorado</h1>
+        <p>A performer blending passion, dance, and emotion — sharing joy from every stage.</p>
+        <div class="hero-cards">
+          <div class="hcard"><strong>Sound</strong><span>Romantic, pop, hip-hop, a touch of opera</span></div>
+          <div class="hcard"><strong>Roots</strong><span>Folklórico • Mariachi instruments</span></div>
+          <div class="hcard"><strong>Gear</strong><span>Trumpet • Guitar • Violin</span></div>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="your-photo.jpg" alt="Angel performing — El Ángel Dorado"/>
+      </figure>
+    </div>
   </header>
 
-  <!-- NAVIGATION -->
-  <nav class="main" aria-label="Main">
-    <div class="wrap">
-      <div class="menu">
-        <a href="index.html">Home</a>
-        <a href="aboutme.html">About Me</a>
-		<a href="evaluations.html">Evaluations</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="cotact.html">Contact</a>
+  <main class="content">
+    <section class="preview">
+      <div class="wrap">
+        <div class="kicker">El Ángel Dorado</div>
+        <h2>San Diego raised • Oaxaqueño at heart</h2>
+        <p>A performer who blends passion, dance, and emotion through music — sharing joy from every stage he steps on.</p>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- HERO IMAGE -->
-  <section id="home" class="hero">
-    <div class="frame">
-      <img src="your-photo.jpg" alt="Angel performing — El Ángel Dorado">
-    </div>
-  </section>
+    <section class="wrap split" id="about">
+      <div class="panel">
+        <img src="about-photo.jpg" alt="Angel dancing folklórico"/>
+      </div>
+      <div class="panel">
+        <h2>About Me</h2>
+        <p><strong>El Ángel Dorado</strong> — a name born from passion and culture. From folklórico to global sounds, I bring color, rhythm, and emotion into everything I create.</p>
+        <p class="muted">Influences: Mon Laferte • Kali Uchis • Las Marías.</p>
+        <div style="margin-top:10px">
+          <a class="btn" href="aboutme.html">Read my story</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- PREVIEW -->
-  <section class="preview">
-    <div class="wrap">
-      <div class="kicker">El Ángel Dorado</div>
-      <h2>San Diego raised • Oaxaqueño at heart</h2>
-      <p>
-        A performer who blends passion, dance, and emotion through music — sharing joy from every stage he steps on.
-      </p>
-    </div>
-  </section>
+    <section class="wrap" id="gallery" style="padding:32px 0 10px;">
+      <div class="grid3">
+        <article class="card">
+          <h3>Recent Performance</h3>
+          <p>A medley blending mariachi roots with modern pop energy.</p>
+        </article>
+        <article class="card">
+          <h3>Studio Sneak Peek</h3>
+          <p>Previewing upcoming songs filled with emotion and heart.</p>
+        </article>
+        <article class="card">
+          <h3>Cultural Moments</h3>
+          <p>Oaxacan pride and heritage shown through every performance.</p>
+        </article>
+      </div>
+      <div class="cta-wrap">
+        <a class="btn" href="evaluations.html#evaluations">Click Now</a>
+        <a class="btn alt" href="gallery.html">See Gallery</a>
+      </div>
+    </section>
+  </main>
 
-  <!-- ABOUT SPLIT -->
-  <section class="wrap split" id="about">
-    <div class="panel">
-      <img src="about-photo.jpg" alt="Angel dancing folklórico">
-    </div>
-    <div class="panel">
-      <h2>About Me</h2>
-      <p><strong>El Ángel Dorado</strong> — a name born from passion and culture. From folklórico to global sounds, I bring color, rhythm, and emotion into everything I create.</p>
-      <p class="muted">Influences: Mon Laferte • Kali Uchis • Las Marías.</p>
-    </div>
-  </section>
-
-  <!-- THREE CARDS -->
-  <section class="wrap" id="gallery" style="padding:40px 0 20px;">
-    <div class="grid3">
-      <article class="card">
-        <h3>Recent Performance</h3>
-        <p>A medley blending mariachi roots with modern pop energy.</p>
-      </article>
-      <article class="card">
-        <h3>Studio Sneak Peek</h3>
-        <p>Previewing upcoming songs filled with emotion and heart.</p>
-      </article>
-      <article class="card">
-        <h3>Cultural Moments</h3>
-        <p>Oaxacan pride and heritage shown through every performance.</p>
-      </article>
-    </div>
-    <div class="cta-wrap">
-      <a class="btn" href="#evaluations">Click Now</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer class="site">
-    <div>© <span id="year"></span> El Ángel Dorado • San Diego ✦ Oaxaca</div>
+    <div class="inner wrap">
+      <div>© <span id="year"></span> <span class="tag">El Ángel Dorado</span></div>
+      <div>San Diego ✦ Oaxaca</div>
+    </div>
   </footer>
 
   <script>
